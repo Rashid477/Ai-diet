@@ -1,0 +1,52 @@
+{% extends 'Admin/index.html' %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+{% if data %}
+<form action=""method="get">
+<table width="200"class="table table-secondary table-hover">
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Name</th>
+    <th scope="col">Age</th>
+    <th scope="col">Gender</th>
+    <th scope="col">Address</th>
+    <th scope="col">Qualification</th>
+    <th scope="col">Experience</th>
+    <th scope="col">E-mail</th>
+    <th scope="col">Phone no</th>
+    <th scope="col">&nbsp;</th>
+  </tr>
+    {% for i in data %}
+  <tr>
+    <td>&nbsp;{{ loop.index }}</td>
+    <td>&nbsp;{{ i.Hm_name }}</td>
+    <td>&nbsp;{{ i.age }}</td>
+    <td>&nbsp;{{ i.gender }}</td>
+    <td> Housename:{{ i.house_name }}<br>Place:{{ i.place }}<br>District:{{ i.district }}<br>State:{{ i.state }}<br>Pin:{{ i.pincode }}</td>
+    <td>  {{ i.qualification }}</td>
+    <td> {{ i.experience }}</td>
+    <td>{{ i.email_id }}</td>
+    <td>{{ i.phone_no }}</td>
+
+         <td><p><a href="/approve_hm/{{ i.Hm_id }}" class="btn btn-outline-success">Approve</a></p>
+         <p><a href="/reject_hm/{{ i.Hm_id }}" class="btn btn-outline-danger">Reject</a></p></td>
+
+  </tr>
+  {% endfor %}
+</table>
+</form>
+    {% else %}
+    <img src="/static/OIP.jpg" alt=""/>
+{% endif %}
+
+
+</body>
+</html>
+{% endblock %}
